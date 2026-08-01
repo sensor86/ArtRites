@@ -1,4 +1,7 @@
-# Last Rites (1997) — Reverse Engineering & Automap
+# ArtRites — Last Rites (1997) Reverse Engineering & Automap
+
+Automap script + level geometry for *Last Rites* (1997) by Ocean Software —
+first of its kind. :-)
 
 Extracted 3D level geometry (with textures) from the proprietary CLF/LIF binary
 formats used by *Last Rites* (Ocean Technology Group / Rage Software, 1997), and
