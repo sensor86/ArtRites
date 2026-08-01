@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+*.pid
+ui_state.json
+automap_window.conf

@@ -1,0 +1,1207 @@
+{
+ "level": "MISS12",
+ "switches": [],
+ "doors": [
+  {
+   "id": 57,
+   "x": -5365,
+   "y": -4674,
+   "z": 47080
+  },
+  {
+   "id": 58,
+   "x": 2724,
+   "y": -5530,
+   "z": 4661
+  },
+  {
+   "id": 66,
+   "x": -29062,
+   "y": -5625,
+   "z": -2183
+  },
+  {
+   "id": 83,
+   "x": -25984,
+   "y": -6945,
+   "z": 2320
+  },
+  {
+   "id": 85,
+   "x": -26969,
+   "y": -6943,
+   "z": 1117
+  },
+  {
+   "id": 98,
+   "x": -4160,
+   "y": -6115,
+   "z": -8800
+  },
+  {
+   "id": 153,
+   "x": 22098,
+   "y": -5133,
+   "z": 15823
+  }
+ ],
+ "groups": [
+  {
+   "group": 2,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T2 op5 T3 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    3,
+    2,
+    3,
+    2,
+    3,
+    2
+   ]
+  },
+  {
+   "group": 3,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T4 op5 T5 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    5,
+    4,
+    5,
+    4,
+    5,
+    4
+   ]
+  },
+  {
+   "group": 4,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     0,
+     39
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T6 AND T39 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    6
+   ]
+  },
+  {
+   "group": 9,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     23
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     24
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T23 op5 T24 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    24,
+    23
+   ]
+  },
+  {
+   "group": 10,
+   "tokens": [
+    [
+     0,
+     99
+    ]
+   ],
+   "cond": "T99",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [
+    {
+     "target": 58,
+     "sub": 0,
+     "delta": 1120,
+     "tx": 2724,
+     "ty": -5530,
+     "tz": 4661
+    },
+    {
+     "target": 58,
+     "sub": 0,
+     "delta": -1120,
+     "tx": 2724,
+     "ty": -5530,
+     "tz": 4661
+    }
+   ],
+   "refs": [
+    99,
+    99,
+    99,
+    99
+   ]
+  },
+  {
+   "group": 11,
+   "tokens": [
+    [
+     0,
+     40
+    ]
+   ],
+   "cond": "T40",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [
+    {
+     "target": 57,
+     "sub": 0,
+     "delta": 1120,
+     "tx": -5365,
+     "ty": -4674,
+     "tz": 47080
+    },
+    {
+     "target": 57,
+     "sub": 0,
+     "delta": -1120,
+     "tx": -5365,
+     "ty": -4674,
+     "tz": 47080
+    }
+   ],
+   "refs": [
+    40,
+    40,
+    40,
+    40
+   ]
+  },
+  {
+   "group": 12,
+   "tokens": [
+    [
+     0,
+     96
+    ]
+   ],
+   "cond": "T96",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [
+    {
+     "target": 66,
+     "sub": 0,
+     "delta": 1120,
+     "tx": -29062,
+     "ty": -5625,
+     "tz": -2183
+    },
+    {
+     "target": 66,
+     "sub": 0,
+     "delta": -1120,
+     "tx": -29062,
+     "ty": -5625,
+     "tz": -2183
+    }
+   ],
+   "refs": [
+    96,
+    41,
+    96,
+    41,
+    96,
+    41,
+    96,
+    41
+   ]
+  },
+  {
+   "group": 14,
+   "tokens": [
+    [
+     0,
+     42
+    ]
+   ],
+   "cond": "T42",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [
+    {
+     "target": 83,
+     "sub": 0,
+     "delta": 2240,
+     "tx": -25984,
+     "ty": -6945,
+     "tz": 2320
+    },
+    {
+     "target": 83,
+     "sub": 1,
+     "delta": 2240,
+     "tx": -25984,
+     "ty": -6945,
+     "tz": 2320
+    },
+    {
+     "target": 85,
+     "sub": 1,
+     "delta": 2240,
+     "tx": -26969,
+     "ty": -6943,
+     "tz": 1117
+    },
+    {
+     "target": 85,
+     "sub": 0,
+     "delta": 2240,
+     "tx": -26969,
+     "ty": -6943,
+     "tz": 1117
+    }
+   ],
+   "refs": [
+    42
+   ]
+  },
+  {
+   "group": 15,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     25
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     26
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T25 op5 T26 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [
+    {
+     "target": 98,
+     "sub": 0,
+     "delta": -1400,
+     "tx": -4160,
+     "ty": -6115,
+     "tz": -8800
+    }
+   ],
+   "refs": [
+    26,
+    25
+   ]
+  },
+  {
+   "group": 16,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     31
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     32
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T31 op5 T32 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [
+    {
+     "target": 153,
+     "sub": 0,
+     "delta": 1050,
+     "tx": 22098,
+     "ty": -5133,
+     "tz": 15823
+    },
+    {
+     "target": 153,
+     "sub": 0,
+     "delta": -1050,
+     "tx": 22098,
+     "ty": -5133,
+     "tz": 15823
+    }
+   ],
+   "refs": [
+    32,
+    31,
+    32,
+    31,
+    32,
+    31
+   ]
+  },
+  {
+   "group": 18,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     10
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     11
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T10 op5 T11 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": []
+  },
+  {
+   "group": 19,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     33
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     34
+    ],
+    [
+     3,
+     null
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     29
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     30
+    ],
+    [
+     3,
+     null
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( ( T33 op5 T34 ) AND ( T29 op5 T30 ) )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": []
+  },
+  {
+   "group": 21,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     35
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     36
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T35 op5 T36 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    36,
+    35
+   ]
+  },
+  {
+   "group": 26,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     13
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     14
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T13 op5 T14 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    14,
+    13
+   ]
+  },
+  {
+   "group": 29,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     19
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     20
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T19 op5 T20 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    20,
+    19
+   ]
+  },
+  {
+   "group": 30,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     21
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     22
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T21 op5 T22 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    22,
+    21
+   ]
+  },
+  {
+   "group": 31,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     17
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     18
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T17 op5 T18 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    18,
+    17
+   ]
+  },
+  {
+   "group": 32,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     27
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     28
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T27 op5 T28 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    28,
+    27
+   ]
+  },
+  {
+   "group": 33,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     37
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     38
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T37 op5 T38 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    38,
+    37
+   ]
+  },
+  {
+   "group": 35,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     19
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     20
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T19 op5 T20 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": []
+  },
+  {
+   "group": 37,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     44
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     0,
+     45
+    ],
+    [
+     3,
+     null
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     47
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     0,
+     46
+    ],
+    [
+     3,
+     null
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( ( T44 AND T45 ) AND ( T47 AND T46 ) )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": []
+  },
+  {
+   "group": 48,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     29
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     30
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T29 op5 T30 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    30,
+    29
+   ]
+  },
+  {
+   "group": 49,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     33
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     34
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T33 op5 T34 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    34,
+    33
+   ]
+  },
+  {
+   "group": 61,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     58
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     0,
+     59
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T58 AND T59 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    59,
+    58
+   ]
+  },
+  {
+   "group": 62,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     60
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     0,
+     61
+    ],
+    [
+     3,
+     null
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     62
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     0,
+     63
+    ],
+    [
+     3,
+     null
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( ( T60 AND T61 ) AND ( T62 AND T63 ) )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    64
+   ]
+  },
+  {
+   "group": 63,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     66
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     0,
+     67
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T66 AND T67 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": []
+  },
+  {
+   "group": 102,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     60
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     0,
+     61
+    ],
+    [
+     3,
+     null
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     62
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     0,
+     63
+    ],
+    [
+     3,
+     null
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( ( T60 AND T61 ) AND ( T62 AND T63 ) )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    98,
+    97,
+    93
+   ]
+  },
+  {
+   "group": 104,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     97
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     98
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T97 op5 T98 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": []
+  },
+  {
+   "group": 105,
+   "tokens": [
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     3,
+     null
+    ],
+    [
+     4,
+     null
+    ],
+    [
+     2,
+     null
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     5,
+     null
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     3,
+     null
+    ]
+   ],
+   "cond": "( T2 op5 T3 ) AND ( T4 op5 T5 )",
+   "sprites": [],
+   "trigpts": [],
+   "actions": [],
+   "refs": [
+    1,
+    1
+   ]
+  }
+ ]
+}

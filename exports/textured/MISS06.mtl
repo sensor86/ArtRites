@@ -1,0 +1,438 @@
+newmtl desc_062
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_062.png
+map_d  MISS06_v25_textures/desc_062.png
+d 1.0
+
+newmtl desc_063
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_063.png
+map_d  MISS06_v25_textures/desc_063.png
+d 1.0
+
+newmtl desc_064
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_064.png
+
+newmtl desc_065
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_065.png
+
+newmtl desc_066
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_066.png
+
+newmtl desc_067
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_067.png
+map_d  MISS06_v25_textures/desc_067.png
+d 1.0
+
+newmtl desc_068
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_068.png
+
+newmtl desc_069
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_069.png
+
+newmtl desc_070
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_070.png
+
+newmtl desc_071
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_071.png
+
+newmtl desc_072
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_072.png
+
+newmtl desc_073
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_073.png
+
+newmtl desc_074
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_074.png
+
+newmtl desc_075
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_075.png
+map_d  MISS06_v25_textures/desc_075.png
+d 1.0
+
+newmtl desc_078
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_078.png
+
+newmtl desc_079
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_079.png
+
+newmtl desc_080
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_080.png
+
+newmtl desc_081
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_081.png
+
+newmtl desc_082
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_082.png
+
+newmtl desc_083
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_083.png
+
+newmtl desc_084
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_084.png
+
+newmtl desc_085
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_085.png
+
+newmtl desc_086
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_086.png
+
+newmtl desc_087
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_087.png
+
+newmtl desc_088
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_088.png
+
+newmtl desc_089
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_089.png
+
+newmtl desc_090
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_090.png
+
+newmtl desc_092
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_092.png
+
+newmtl desc_093
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_093.png
+
+newmtl desc_094
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_094.png
+
+newmtl desc_095
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_095.png
+
+newmtl desc_096
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_096.png
+
+newmtl desc_097
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_097.png
+
+newmtl desc_098
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_098.png
+
+newmtl desc_099
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_099.png
+
+newmtl desc_100
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_100.png
+
+newmtl desc_102
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_102.png
+
+newmtl desc_103
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_103.png
+
+newmtl desc_104
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_104.png
+
+newmtl desc_105
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_105.png
+
+newmtl desc_106
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_106.png
+
+newmtl desc_107
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_107.png
+
+newmtl desc_108
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_108.png
+
+newmtl desc_109
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_109.png
+
+newmtl desc_110
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_110.png
+
+newmtl desc_111
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_111.png
+
+newmtl desc_112
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_112.png
+
+newmtl desc_113
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_113.png
+
+newmtl desc_114
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_114.png
+
+newmtl desc_115
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_115.png
+
+newmtl desc_116
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_116.png
+
+newmtl desc_117
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_117.png
+
+newmtl desc_118
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_118.png
+
+newmtl desc_119
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_119.png
+map_d  MISS06_v25_textures/desc_119.png
+d 1.0
+
+newmtl desc_120
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_120.png
+map_d  MISS06_v25_textures/desc_120.png
+d 1.0
+
+newmtl desc_121
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_121.png
+
+newmtl desc_122
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_122.png
+map_d  MISS06_v25_textures/desc_122.png
+d 1.0
+
+newmtl desc_123
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_123.png
+map_d  MISS06_v25_textures/desc_123.png
+d 1.0
+
+newmtl desc_124
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_124.png
+
+newmtl desc_125
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_125.png
+
+newmtl desc_126
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_126.png
+
+newmtl desc_127
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_127.png
+
+newmtl desc_128
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_128.png
+
+newmtl desc_129
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_129.png
+
+newmtl desc_130
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_130.png
+
+newmtl desc_131
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_131.png
+
+newmtl desc_132
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_132.png
+
+newmtl desc_133
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_133.png
+
+newmtl desc_134
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_134.png
+
+newmtl desc_135
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_135.png
+
+newmtl desc_136
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_136.png
+
+newmtl desc_137
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_137.png
+
+newmtl desc_138
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_138.png
+
+newmtl desc_139
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_139.png
+
+newmtl desc_140
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_140.png
+
+newmtl desc_141
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_141.png
+
+newmtl desc_142
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_142.png
+
+newmtl desc_143
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_143.png
+
+newmtl desc_144
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_144.png
+
+newmtl desc_145
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_145.png
+
+newmtl desc_146
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_146.png
+
+newmtl desc_147
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_147.png
+
+newmtl desc_148
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_148.png
+
+newmtl desc_149
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_149.png
+
+newmtl desc_150
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_150.png
+
+newmtl desc_151
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_151.png
+
+newmtl desc_152
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_152.png
+
+newmtl desc_153
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_153.png
+map_d  MISS06_v25_textures/desc_153.png
+d 1.0
+
+newmtl desc_154
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_154.png
+
+newmtl desc_155
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_155.png
+
+newmtl desc_156
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_156.png
+
+newmtl desc_157
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_157.png
+
+newmtl desc_158
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_158.png
+
+newmtl desc_159
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_159.png
+
+newmtl desc_160
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_160.png
+
+newmtl desc_161
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_161.png
+
+newmtl desc_162
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_162.png
+
+newmtl desc_163
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_163.png
+
+newmtl desc_164
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_164.png
+
+newmtl desc_165
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_165.png
+
+newmtl desc_166
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_166.png
+
+newmtl desc_167
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_167.png
+
+newmtl desc_168
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_168.png
+map_d  MISS06_v25_textures/desc_168.png
+d 1.0
+
+newmtl desc_169
+Kd 1 1 1
+map_Kd MISS06_v25_textures/desc_169.png
+
+newmtl nomat
+Kd 0.5 0.5 0.5
