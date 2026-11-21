@@ -1,5 +1,5 @@
 ================================================================================
-  LAST RITES (1997) - LIVE AUTOMAP   v1.3
+  LAST RITES (1997) - LIVE AUTOMAP   v1.5
   A real-time map mod for the Ocean / Mindscape game "Last Rites"
 ================================================================================
 
@@ -15,33 +15,42 @@ you are. It cannot change or break your game or saves.
 --------------------------------------------------------------------------------
   WHAT YOU NEED
 --------------------------------------------------------------------------------
-- Last Rites running in DOSBox on Windows (the GOG or Steam release is perfect -
-  both ship the game inside DOSBox).
-- Python 3 (free). Get it from https://www.python.org/downloads/ and during
-  install TICK the box "Add Python to PATH". That's the only dependency.
+- Last Rites running in DOSBox on Windows (GOG or Steam - both ship the game
+  inside DOSBox). The map works with DOSBox, DOSBox-X and DOSBox Staging - it
+  finds the game's memory itself and does not care which emulator build you use.
+- Either:
+    * the self-contained .exe release (no Python needed - recommended), or
+    * Python 3 (free) from https://www.python.org/downloads/  (tick "Add to
+      PATH") if you run the source version.
 
 (Windows only for now - the map reads DOSBox's memory through a Windows API.)
 
 --------------------------------------------------------------------------------
-  INSTALL  (30 seconds)
+  INSTALL  (the easy way)
 --------------------------------------------------------------------------------
-1. Copy this whole "LastRitesAutomap" folder INTO your Last Rites game folder -
-   the folder that contains dosbox.exe.
+1. Unzip the WHOLE release somewhere (do not download files one by one from the
+   GitHub page - use the release .zip).
+2. Double-click "Install Last Rites Automap.bat" and follow it. It finds your
+   game folder, copies the mod in, and can add a Desktop shortcut.
+
+  (Manual way, if you prefer)
+  Copy this whole "LastRitesAutomap" folder INTO your Last Rites game folder -
+  the folder that contains dosbox.exe:
       GOG:   ...\GOG Games\Last Rites\
       Steam: ...\steamapps\common\Last Rites\
-2. Open the LastRitesAutomap folder and double-click:
-      "Play Last Rites with Automap.bat"
-   That starts the game and the map together.
-3. Load a level and play. The map detects which level you are in, follows you,
-   and switches automatically when you finish a level and start the next one.
+  Then double-click "Play Last Rites with Automap.bat".
 
-If the game is already running, use "Map only (game already running).bat" instead.
+3. The MAP window opens first and says "Waiting for a running level". Start a
+   mission; it attaches by itself within a few seconds. From then on it detects
+   which level you are in and switches automatically when you finish a level.
+
+If the game is already running, use "Map only (game already running).bat".
 
 --------------------------------------------------------------------------------
   CONTROLS  (these work even while the GAME window has focus;
              no F-keys and no +/- - the game itself uses F1-F8 and +/-)
 --------------------------------------------------------------------------------
-  O          corner panel <-> full window
+  O          corner panel <-> full window   (there is no "0" key - it is O)
   V          panel transparency (4 steps)
   B          bring the map back on top (it also re-asserts itself every 2 s)
   Tab        2D top-down map <-> 3D view
@@ -109,20 +118,25 @@ Your markers are saved in a "markers" folder created next to this file.
 --------------------------------------------------------------------------------
   TROUBLESHOOTING
 --------------------------------------------------------------------------------
+- The map window opens and says "Waiting for a running level": that is normal -
+  it waits until you load a mission, then attaches. If it never attaches, see
+  the log bullet below.
 - The map never shows above the game: the game is in real (exclusive)
   fullscreen - NOTHING can be drawn above that, it is a Windows limitation.
   Press Alt+Enter in the game to switch it to a window. The included
   launcher already starts the game in a desktop-sized window for this reason
   (automap_window.conf; delete that file to get fullscreen back).
 - Map opens but the dot doesn't move: load an actual level (not the menu).
-  The map says "waiting for a running level" until you are in a mission.
 - Dot stops after you restart DOSBox: it re-finds the game within a few seconds.
   If it stays stuck, close and reopen the map.
 - The corner panel is in the way: drag it anywhere with the mouse, V makes it
   more transparent, O turns it into a normal window.
 - The map disappeared behind the game: press B to bring it back on top.
 - "Python is required": install Python 3 from python.org and tick "Add to PATH",
-  or grab the standalone .exe version of this mod instead.
+  or grab the standalone .exe release instead.
+- It still won't attach: close the map, then send the file "automap.log" (it is
+  written next to the map every run) with your report. It shows exactly what the
+  map found - DOSBox process, memory base, level - and makes diagnosis quick.
 
 --------------------------------------------------------------------------------
 Built by reverse-engineering the .CLF level files and the game's memory layout.

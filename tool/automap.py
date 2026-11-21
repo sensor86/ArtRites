@@ -33,6 +33,7 @@ _ap.add_argument('--base', default=None, help='Force MemBase (hex), e.g. --base 
 _ap.add_argument('--scan', action='store_true', help='Dump raw memory regions and exit')
 _ap.add_argument('--search', action='store_true', help='Byte-pattern search for real MemBase and exit')
 _ap.add_argument('--watch', action='store_true', help='Live console monitor: prints CF840/E5278 every 0.5s')
+_ap.add_argument('--self-test', action='store_true', help='Dry-run detection without a running game; print findings and exit 0')
 _args, _ = _ap.parse_known_args()
 
 LEVEL     = _args.level.upper()
@@ -47,6 +48,48 @@ else:
     _BUNDLED  = _HERE
 
 _BASE_FILE = os.path.join(_HERE, '.membase')
+
+# ---------------------------------------------------------------------------
+# Logging: the release .exe is a windowed (no-console) build, so every print()
+# is invisible — and PyInstaller sets sys.stdout to None, where print() would
+# even raise. Tee stdout/stderr into automap.log next to this file so a stuck
+# install is diagnosable ("attach automap.log").
+# ---------------------------------------------------------------------------
+_LOG_FILE = None
+
+def _setup_log():
+    global _LOG_FILE
+    try:
+        _LOG_FILE = open(os.path.join(_HERE, 'automap.log'), 'w', encoding='utf-8')
+    except Exception:
+        _LOG_FILE = None
+    if _LOG_FILE is None:
+        return
+    _LOG_FILE.write(f"--- Last Rites Automap {time.strftime('%Y-%m-%d %H:%M:%S')} ---\n")
+    _LOG_FILE.flush()
+    class _Tee:
+        def __init__(self, *streams):
+            self._streams = [s for s in streams if s is not None]
+        def write(self, s):
+            for st in self._streams:
+                try:
+                    st.write(s)
+                    st.flush()
+                except Exception:
+                    pass
+            return len(s)
+        def flush(self):
+            for st in self._streams:
+                try:
+                    st.flush()
+                except Exception:
+                    pass
+        def isatty(self):
+            return False
+    sys.stdout = _Tee(sys.stdout, _LOG_FILE)
+    sys.stderr = _Tee(sys.stderr, _LOG_FILE)
+
+_setup_log()
 
 def _load_saved_base():
     try:
@@ -617,6 +660,47 @@ def find_base_static(handle):
     return flat
 
 
+# --- DOSBox-version-independent flat-base discovery --------------------------
+# find_base_static() assumes the CauseWay flat-DS sits at a FIXED offset from the
+# BDA. That offset is a property of the game's DOS-extender layout, but pinning
+# it is fragile across DOSBox builds / memory sizes. This is the robust anchor:
+# the game itself writes its current level as "levels\missNN" at flat+0xCE0D0.
+# Find that string in DOSBox memory and derive flat = hit - 0xCE0D0 — no
+# emulator-layout assumption at all, so it works on DOSBox, DOSBox-X, Staging,
+# etc. The candidate is validated by the live player position landing in a real
+# level (so a static level-name TABLE in the exe can't fake it).
+def find_flat_by_levelname(handle):
+    """Scan committed DOSBox memory for the game's runtime level-name buffer.
+    Returns (flat_base, 'MISSNN') or (None, None)."""
+    for rbase, rsize in _committed_regions(handle, 4 * 1024 * 1024):
+        raw = _read_mem(handle, rbase, rsize)
+        if not raw:
+            continue
+        start = 0
+        while True:
+            i = raw.find(b'levels\\miss', start)
+            if i < 0:
+                break
+            start = i + 1
+            cand = rbase + i - OFF_LEVELNAME
+            if cand < 0x100000:            # flat DS lives in extended memory
+                continue
+            d = _read_mem(handle, cand + OFF_LEVELNAME, 16)
+            if not d:
+                continue
+            m = _LEVELNAME_RE.match(d)
+            if not m:
+                continue
+            # a level must actually be RUNNING here: the live player position
+            # (flat+0xCF840) has to land inside a real level
+            pd = _read_mem(handle, cand + OFF_CF840, 16)
+            if pd and len(pd) == 16:
+                zone_raw, x, y, z = struct.unpack_from('<4i', pd)
+                if detect_level_from_pos(-x/256.0, z/256.0, zone_raw):
+                    return cand, 'MISS' + m.group(1).decode()
+    return None, None
+
+
 def _proc_alive(pid):
     """Is the process still running? (host-side check, no game memory involved)"""
     h = K32.OpenProcess(0x1000, False, pid)   # PROCESS_QUERY_LIMITED_INFORMATION
@@ -740,6 +824,17 @@ class MemReader:
                 FORCED_BASE = found
                 self._warned_stale = False
                 flat = found
+        # DOSBox-version-independent recovery: if the BDA offset assumption did
+        # not pan out (different emulator build), anchor on the game's own level
+        # string instead.
+        if flat is None and not USER_FORCED:
+            flat2, _lv = find_flat_by_levelname(handle)
+            if flat2 and _base_is_live(handle, flat2):
+                _save_base(flat2)
+                FORCED_BASE = flat2
+                self._warned_stale = False
+                flat = flat2
+                print(f"[automap] MemBase recovered from level-name scan: 0x{flat2:X}")
         if flat is not None:
             self._handle    = handle
             self._flat_base = flat
@@ -1521,7 +1616,8 @@ class App:
     def __init__(self):
         self.ui = load_ui_state()
         self.root   = tk.Tk()
-        self.root.title(f"Last Rites Automap — {LEVEL}")
+        self.root.title("Last Rites Automap — waiting for a level" if LEVEL == 'AUTO'
+                        else f"Last Rites Automap — {LEVEL}")
         self.root.configure(bg=COL_BG)
         self.root.geometry(sane_geom(self.ui.get('window_geom', '')) or '1000x760')
 
@@ -1548,7 +1644,7 @@ class App:
         self.sav_tick   = 0
         self._first_pos = True   # auto-center on first reading
 
-        self.status = tk.Label(self.root, text="Searching for DOSBox…",
+        self.status = tk.Label(self.root, text="Waiting for a running level…",
                                fg=COL_TEXT, bg=COL_BG, font=('Consolas', 9))
         self.status.pack(pady=2)
 
@@ -1574,7 +1670,7 @@ class App:
         self.view.show_ambient = self.ui.get('ambient', False)
         self._click_xy = None
         self._strip_drag = False
-        if self.overlay:
+        if self.overlay and LEVEL != 'AUTO':
             self.root.after(50, lambda: self._apply_window_mode())
 
         self.hotkey_q = queue.Queue()
@@ -1934,6 +2030,34 @@ class App:
         if self._hvx*self._hvx + self._hvy*self._hvy > 0.01:
             self.view.heading = math.atan2(self._hvx, self._hvy)
 
+    def _load_first_level(self, newL):
+        """AUTO detection resolved: hot-load the detected level and drop into
+        the user's preferred overlay/window mode."""
+        global LEVEL
+        load_level(newL)
+        load_geo_async(newL)
+        self.view.markers = load_markers(LEVEL)
+        self.view.follow = True
+        self._first_pos = True
+        self._pos_established = False
+        self.root.title(f"Last Rites Automap — {LEVEL}")
+        if self.overlay:
+            self._apply_window_mode()
+
+    def _draw_waiting(self):
+        """Placeholder screen while AUTO detection is still resolving."""
+        self.canvas.delete('all')
+        w, h = self.view.cw, self.view.ch
+        self.canvas.create_text(w/2, h/2 - 14,
+            text="Waiting for a running level…",
+            fill=COL_TEXT, font=('Segoe UI', 16, 'bold'), justify='center')
+        self.canvas.create_text(w/2, h/2 + 24,
+            text="Start Last Rites and load a mission — the map attaches by itself.\n"
+                 "If it never attaches, close the map and attach automap.log\n"
+                 "(it is written next to this file).",
+            fill=COL_TEXT, font=('Segoe UI', 11), justify='center')
+        self.status.config(text=self.reader.get_status())
+
     def _switch_level(self, newL):
         """Hot-swap the loaded map to newL (resets trail/visited/markers)."""
         if not find_json(newL):
@@ -1977,6 +2101,18 @@ class App:
                 self._key_action(self.hotkey_q.get_nowait())
         except queue.Empty:
             pass
+
+        # window-first startup: while AUTO detection is still resolving, show a
+        # clear waiting screen instead of an empty map
+        if LEVEL == 'AUTO' and not zones:
+            with _DETECT_LOCK:
+                dl = _DETECTED_LEVEL
+            if dl:
+                self._load_first_level(dl)
+            else:
+                self._draw_waiting()
+                self.root.after(200, self._tick)
+                return
 
         pos     = self.reader.get_pos()
         status  = self.reader.get_status()
@@ -2143,24 +2279,27 @@ def raw_scan(handle):
         addr = mbi.BaseAddress + max(mbi.RegionSize, 1)
 
 
-def auto_detect_level():
-    """Block until the player position at the MemBase matches a level.
-    Self-discovers the base (BDA fingerprint + live tick) if missing or stale."""
-    global FORCED_BASE
+# --- Background level detection (window-first startup) -----------------------
+# The original auto_detect_level() blocked BEFORE the Tk window existed, so on a
+# fresh machine (no DOSBox running yet, or a stale .membase copied from another
+# PC) the exe sat silently in the background forever — the reported "click →
+# nothing". Detection now runs in a daemon thread; the window shows "waiting for
+# a running level" until it resolves, then hot-loads the detected level.
+_DETECT_LOCK = threading.Lock()
+_DETECTED_LEVEL = None
+
+def detect_loop():
+    """Resolve the live MemBase + loaded level WITHOUT a level already being
+    loaded (find_base_static's BDA fingerprint needs no level data). Sets
+    _DETECTED_LEVEL; the App polls it and hot-loads the level."""
+    global FORCED_BASE, _DETECTED_LEVEL
     print("[automap] AUTO mode: waiting for a running level…")
     last_discovery = 0.0
-    game_seen, game_gone = False, None
     while True:
+        with _DETECT_LOCK:
+            if _DETECTED_LEVEL:
+                return
         pid = find_dosbox_pid()
-        # close with the game even before a level was ever detected
-        if pid:
-            game_seen, game_gone = True, None
-        elif game_seen:
-            if game_gone is None:
-                game_gone = time.monotonic()
-            elif time.monotonic() - game_gone > 6.0:
-                print("[automap] game closed -- exiting")
-                sys.exit(0)
         base = FORCED_BASE if FORCED_BASE is not None else _load_saved_base()
         if pid:
             h = K32.OpenProcess(PROCESS_VM_READ | PROCESS_QUERY_INFORMATION, False, pid)
@@ -2180,13 +2319,25 @@ def auto_detect_level():
                     if d and len(d) == 16:
                         zone_raw, x, y, z = struct.unpack_from('<4i', d)
                         detected = detect_level_from_pos(-x/256.0, z/256.0, zone_raw)
+                # DOSBox-version-independent: locate the game's own level-name
+                # buffer ("levels\missNN" @ flat+0xCE0D0) — works whatever the
+                # emulator's memory layout / CauseWay flat-DS placement is.
+                if not detected:
+                    flat2, lvl2 = find_flat_by_levelname(h)
+                    if flat2 and lvl2 and find_json(lvl2):
+                        _save_base(flat2)
+                        FORCED_BASE = flat2
+                        detected = lvl2
                 if detected:
+                    with _DETECT_LOCK:
+                        _DETECTED_LEVEL = detected
                     K32.CloseHandle(h)
                     print(f"[automap] detected level: {detected}")
-                    return detected
-                # no level match — base may be stale (e.g. DOSBox restarted)
+                    return
+                # base missing or not reading the game — (re)discover it from the
+                # BIOS Data Area fingerprint (throttled; it sleeps ~1.2s inside)
                 now = time.monotonic()
-                if not USER_FORCED and now - last_discovery > 10.0:
+                if not USER_FORCED and now - last_discovery > 3.0:
                     last_discovery = now
                     found = find_base_static(h)
                     if found:
@@ -2230,9 +2381,34 @@ if __name__ == '__main__':
             print(f"{int(time.time()-t0):5d}  zone={zone}  x={fv(x)} y={fv(y)} z={fv(z)}")
             time.sleep(0.25)
 
+    if _args.self_test:
+        # Dry-run of the detection chain, no window, safe with no game running.
+        print("[self-test] looking for a DOSBox process...")
+        pid = find_dosbox_pid()
+        if not pid:
+            print("[self-test] no DOSBox process found (this is fine if the game isn't running).")
+            sys.exit(0)
+        print(f"[self-test] DOSBox pid={pid}")
+        handle = K32.OpenProcess(PROCESS_VM_READ | PROCESS_QUERY_INFORMATION, False, pid)
+        if not handle:
+            print("[self-test] OpenProcess failed (insufficient rights?).")
+            sys.exit(0)
+        regions = _committed_regions(handle, 4 * 1024 * 1024)
+        print(f"[self-test] {len(regions)} committed region(s) >= 4MB")
+        flat, lvl = find_flat_by_levelname(handle)
+        if flat is not None:
+            print(f"[self-test] level-name scan: flat base 0x{flat:X}, level {lvl}")
+        else:
+            print("[self-test] level-name scan: no match (no mission loaded yet, or scan needs a retry).")
+        K32.CloseHandle(handle)
+        sys.exit(0)
+
     replace_previous_instance()
     if LEVEL == 'AUTO':
-        LEVEL = auto_detect_level()
-    load_level(LEVEL)
-    load_geo_async(LEVEL)
+        # window-first: create the UI immediately and detect the level in the
+        # background instead of blocking before the window exists
+        threading.Thread(target=detect_loop, daemon=True).start()
+    else:
+        load_level(LEVEL)
+        load_geo_async(LEVEL)
     App().run()
